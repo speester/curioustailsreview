@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Curious Tails – Leave Us a Review</title>
+
+<!-- Lucide icon library (CDN) -->
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+<style>
+/* ============================================================
+   CURIOUS TAILS – Google Review Helper
+   All CSS scoped under .ct-review to avoid theme conflicts
+   ============================================================ */
+.ct-review{
+  --ct-orange:#f97316;
+  --ct-amber:#f59e0b;
+  --ct-grad:linear-gradient(135deg,#f97316 0%,#f59e0b 100%);
+  --ct-cream:#fffdf8;
+  --ct-gold:#f59e0b;
+  --ct-gold-soft:#fef3c7;
+  --ct-slate:#1e293b;
+  --ct-slate-soft:#475569;
+  --ct-line:#e2e8f0;
+  --ct-radius:18px;
+  --ct-shadow:0 10px 30px rgba(15,23,42,.08);
+  --ct-shadow-lg:0 18px 45px rgba(249,115,22,.20);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  color:var(--ct-slate);
+  line-height:1.6;
+  box-sizing:border-box;
+}
+.ct-review *,.ct-review *::before,.ct-review *::after{box-sizing:border-box;}
+
+.ct-review .ct-container{
+  max-width:760px;
+  margin:0 auto;
+  padding:36px 26px 56px;
+  background:linear-gradient(180deg,#fff7ed 0%,#ffffff 40%);
+  border-radius:26px;
+  position:relative;
+  overflow:hidden;
+}
+/* subtle paw-print background touch */
+.ct-review .ct-container::before{
+  content:"🐾";
+  position:absolute;
+  top:14px; right:18px;
+  font-size:90px;
+  opacity:.05;
+  transform:rotate(15deg);
+  pointer-events:none;
+}
+
+/* ---------- Header ---------- */
+.ct-review .ct-header{text-align:center;margin-bottom:30px;position:relative;z-index:1;}
+.ct-review .ct-header h1{
+  font-size:2.5rem;
+  font-weight:800;
+  letter-spacing:-.5px;
+  background:var(--ct-grad);
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;
+  margin:0 0 12px;
+}
+.ct-review .ct-header p{
+  color:var(--ct-slate-soft);
+  font-size:1.08rem;
+  max-width:540px;
+  margin:0 auto;
+}
+.ct-review .ct-badges{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:16px;}
+.ct-review .ct-badge{
+  display:inline-flex;align-items:center;gap:7px;
+  background:#fff;border:1px solid var(--ct-line);
+  color:var(--ct-orange);font-weight:600;font-size:.85rem;
+  padding:7px 14px;border-radius:999px;box-shadow:var(--ct-shadow);
+}
+.ct-review .ct-badge.ct-google{background:var(--ct-grad);color:#fff;border:none;}
+
+/* ---------- Reviews slider ---------- */
+/* extra bottom margin so it doesn't touch the next section */
+.ct-review .ct-slider{margin:28px 0 48px;overflow:hidden;position:relative;}
+.ct-review .ct-slider::before,
+.ct-review .ct-slider::after{
+  content:"";position:absolute;top:0;bottom:0;width:50px;z-index:2;pointer-events:none;
+}
+.ct-review .ct-slider::before{left:0;background:linear-gradient(90deg,#fff7ed,transparent);}
+.ct-review .ct-slider::after{right:0;background:linear-gradient(270deg,#fff,transparent);}
+.ct-review .ct-track{display:flex;width:max-content;animation:ct-scroll 42s linear infinite;}
+.ct-review .ct-slider:hover .ct-track{animation-play-state:paused;}
+@keyframes ct-scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+.ct-review .ct-card{
+  width:300px;flex:0 0 auto;margin:0 10px;
+  background:var(--ct-cream);
+  border:1px solid var(--ct-line);
+  border-radius:var(--ct-radius);
+  padding:20px;
+  box-shadow:var(--ct-shadow);
+  display:flex;gap:14px;align-items:flex-start;
+}
+.ct-review .ct-avatar{
+  width:50px;height:50px;border-radius:50%;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-weight:700;font-size:1.1rem;
+}
+.ct-review .ct-card .ct-name{font-weight:700;color:var(--ct-slate);font-size:.95rem;}
+.ct-review .ct-card .ct-stars{color:var(--ct-gold);font-size:.9rem;margin:3px 0 7px;}
+.ct-review .ct-card .ct-text{font-size:.86rem;color:var(--ct-slate-soft);line-height:1.45;}
+
+/* ---------- Form sections ---------- */
+.ct-review .ct-section{margin-bottom:30px;position:relative;z-index:1;}
+.ct-review .ct-section h3{
+  font-size:1.22rem;font-weight:700;color:var(--ct-slate);
+  display:flex;align-items:center;gap:10px;margin:0 0 6px;
+}
+.ct-review .ct-section h3 i{color:var(--ct-orange);}
+.ct-review .ct-hint{
+  font-size:.9rem;color:var(--ct-slate-soft);margin-bottom:14px;
+  display:flex;align-items:center;gap:7px;
+}
+.ct-review .ct-hint i{color:var(--ct-gold);}
+
+/* ---------- Star rating selector ---------- */
+.ct-review .ct-rating{
+  display:flex;gap:8px;justify-content:center;
+  background:var(--ct-cream);border:1px solid var(--ct-line);
+  border-radius:var(--ct-radius);padding:18px;box-shadow:var(--ct-shadow);
+}
+.ct-review .ct-star{
+  font-size:2.2rem;line-height:1;cursor:pointer;color:#d6d3d1;
+  transition:transform .15s ease,color .15s ease;user-select:none;
+}
+.ct-review .ct-star:hover{transform:scale(1.18);}
+.ct-review .ct-star.ct-on{color:var(--ct-gold);text-shadow:0 2px 8px rgba(245,158,11,.4);}
+
+/* ---------- Selection grids (staff / qualities) ---------- */
+.ct-review .ct-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;}
+.ct-review .ct-item{
+  padding:14px 16px;border:2px solid var(--ct-line);border-radius:14px;
+  background:#fff;cursor:pointer;text-align:center;font-weight:600;
+  color:var(--ct-slate);position:relative;
+  transition:transform .25s cubic-bezier(.175,.885,.32,1.275),
+             border-color .2s ease,background .2s ease,box-shadow .2s ease;
+}
+.ct-review .ct-item:hover{
+  border-color:var(--ct-amber);transform:translateY(-3px);
+  box-shadow:var(--ct-shadow);
+}
+.ct-review .ct-item.ct-selected{
+  border-color:transparent;background:var(--ct-grad);color:#fff;
+  transform:translateY(-3px);box-shadow:var(--ct-shadow-lg);
+}
+.ct-review .ct-item.ct-selected::after{
+  content:"✓";position:absolute;top:-9px;right:-9px;
+  width:24px;height:24px;border-radius:50%;
+  background:var(--ct-gold);color:#fff;font-size:13px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 3px 10px rgba(245,158,11,.5);
+}
+
+/* ---------- Breed chips (single select) ---------- */
+.ct-review .ct-chips{display:flex;flex-wrap:wrap;gap:10px;}
+.ct-review .ct-chip{
+  padding:10px 18px;border:2px solid var(--ct-line);border-radius:999px;
+  background:#fff;cursor:pointer;font-weight:600;color:var(--ct-slate);
+  display:inline-flex;align-items:center;gap:7px;
+  transition:transform .2s ease,border-color .2s ease,background .2s ease,box-shadow .2s ease;
+}
+.ct-review .ct-chip:hover{border-color:var(--ct-amber);transform:translateY(-2px);box-shadow:var(--ct-shadow);}
+.ct-review .ct-chip.ct-selected{border-color:transparent;background:var(--ct-grad);color:#fff;box-shadow:var(--ct-shadow-lg);}
+
+/* ---------- Buttons ---------- */
+.ct-review .ct-btn{
+  width:100%;border:none;cursor:pointer;border-radius:16px;
+  padding:17px 26px;font-size:1.05rem;font-weight:700;
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  margin:14px 0;min-height:60px;position:relative;overflow:hidden;
+  background:var(--ct-grad);color:#fff;box-shadow:var(--ct-shadow-lg);
+  transition:transform .2s ease,box-shadow .2s ease,opacity .2s ease;
+  text-decoration:none;
+}
+.ct-review .ct-btn:hover{transform:translateY(-2px);box-shadow:0 22px 50px rgba(249,115,22,.30);}
+.ct-review .ct-btn:disabled{opacity:.65;cursor:not-allowed;transform:none;}
+.ct-review .ct-btn.ct-secondary{background:#fff;color:var(--ct-orange);border:2px solid var(--ct-orange);box-shadow:var(--ct-shadow);}
+.ct-review .ct-btn.ct-secondary:hover{background:#fff7ed;}
+.ct-review .ct-btn.ct-google-btn{background:linear-gradient(135deg,#ea580c 0%,#f59e0b 100%);}
+.ct-review .ct-btn i,.ct-review .ct-btn .ct-gicon{position:relative;z-index:2;flex-shrink:0;}
+
+.ct-review .ct-btn-row{display:flex;gap:12px;flex-wrap:wrap;}
+.ct-review .ct-btn-row .ct-btn{flex:1;min-width:160px;margin:14px 0;}
+
+/* spinner */
+.ct-review .ct-spinner i{animation:ct-spin 1s linear infinite;display:block;}
+@keyframes ct-spin{to{transform:rotate(360deg);}}
+
+/* small Google "G" glyph */
+.ct-review .ct-gicon{width:20px;height:20px;background:#fff;border-radius:50%;
+  display:inline-flex;align-items:center;justify-content:center;font-weight:800;
+  color:var(--ct-orange);font-size:13px;}
+
+/* ---------- Generated review box ---------- */
+.ct-review .ct-output{
+  display:none;background:var(--ct-cream);border:1px solid var(--ct-line);
+  border-left:5px solid var(--ct-gold);border-radius:var(--ct-radius);
+  padding:24px;margin:24px 0 6px;font-size:1.08rem;line-height:1.7;
+  color:var(--ct-slate);min-height:90px;box-shadow:var(--ct-shadow);
+}
+.ct-review .ct-output.ct-show{display:block;animation:ct-appear .5s ease-out;}
+@keyframes ct-appear{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+.ct-review .ct-counter{font-size:.8rem;color:var(--ct-slate-soft);text-align:right;margin-bottom:4px;}
+
+/* ---------- Action hint indicator ---------- */
+.ct-review .ct-action-hint{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  color:var(--ct-orange);font-weight:600;font-size:.95rem;
+  background:#fff7ed;border:2px dashed var(--ct-amber);
+  border-radius:14px;padding:11px;margin:8px 0;
+  animation:ct-bob 2s ease-in-out infinite;
+}
+@keyframes ct-bob{0%,100%{transform:translateY(0);}50%{transform:translateY(-4px);}}
+
+/* ---------- Google steps ---------- */
+.ct-review .ct-steps{
+  display:none;background:#fff7ed;border:2px dashed var(--ct-orange);
+  border-radius:var(--ct-radius);padding:20px;margin:20px 0;
+}
+.ct-review .ct-steps h4{color:var(--ct-orange);margin:0 0 14px;font-size:1.1rem;
+  display:flex;align-items:center;gap:9px;}
+.ct-review .ct-step{display:flex;gap:12px;align-items:flex-start;margin-bottom:11px;}
+.ct-review .ct-step:last-child{margin-bottom:0;}
+.ct-review .ct-num{
+  flex-shrink:0;width:26px;height:26px;border-radius:50%;
+  background:var(--ct-grad);color:#fff;font-weight:700;font-size:.85rem;
+  display:flex;align-items:center;justify-content:center;
+}
+.ct-review .ct-step-txt{color:var(--ct-slate-soft);font-size:.95rem;padding-top:2px;}
+
+/* ---------- Toast ---------- */
+.ct-review .ct-toast{
+  position:fixed;top:24px;right:24px;z-index:99999;
+  background:var(--ct-grad);color:#fff;font-weight:600;
+  padding:14px 22px;border-radius:14px;box-shadow:var(--ct-shadow-lg);
+  opacity:0;transform:translateX(120%);transition:all .4s cubic-bezier(.175,.885,.32,1.275);
+}
+.ct-review .ct-toast.ct-show{opacity:1;transform:translateX(0);}
+
+.ct-review .ct-hidden{display:none !important;}
+
+/* ---------- Footer ---------- */
+.ct-review .ct-footer{
+  text-align:center;margin-top:34px;padding-top:20px;
+  border-top:1px solid var(--ct-line);color:var(--ct-slate-soft);font-size:.85rem;
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width:640px){
+  .ct-review .ct-container{padding:26px 14px 44px;border-radius:18px;}
+  .ct-review .ct-header h1{font-size:1.9rem;}
+  .ct-review .ct-grid{grid-template-columns:1fr 1fr;}
+  .ct-review .ct-item{font-size:.9rem;padding:12px 8px;}
+  .ct-review .ct-card{width:260px;}
+  .ct-review .ct-star{font-size:1.9rem;}
+  .ct-review .ct-toast{top:14px;right:14px;left:14px;transform:translateY(-130%);}
+  .ct-review .ct-toast.ct-show{transform:translateY(0);}
+  .ct-review .ct-btn-row .ct-btn{min-width:100%;}
+}
+</style>
+</head>
+<body>
+
+<div class="ct-review">
+  <div class="ct-container">
+
+    <!-- ============ HEADER ============ -->
+    <div class="ct-header">
+      <h1>Help Us Wag More Tails on Google! 🐾</h1>
+      <p>Loved your visit to <strong>Curious Tails</strong> — Singapore's trusted, AVS-licensed puppy store in Balestier? Generate a glowing 5-star review in seconds and share the love!</p>
+      <div class="ct-badges">
+        <span class="ct-badge ct-google"><span class="ct-gicon">G</span> Google Reviews</span>
+        <span class="ct-badge"><i data-lucide="shield-check" style="width:16px;height:16px;"></i> AVS Licensed AS24J00046</span>
+        <span class="ct-badge"><i data-lucide="map-pin" style="width:16px;height:16px;"></i> Balestier, SG</span>
+      </div>
+    </div>
+
+    <!-- ============ REVIEWS SLIDER ============ -->
+    <div class="ct-slider">
+      <div class="ct-track" id="ctTrack"></div>
+    </div>
+
+    <!-- ============ STAR RATING SELECTOR ============ -->
+    <div class="ct-section">
+      <h3><i data-lucide="star" style="width:20px;height:20px;"></i> How would you rate your experience?</h3>
+      <div class="ct-rating" id="ctRating">
+        <span class="ct-star ct-on" data-v="1">★</span>
+        <span class="ct-star ct-on" data-v="2">★</span>
+        <span class="ct-star ct-on" data-v="3">★</span>
+        <span class="ct-star ct-on" data-v="4">★</span>
+        <span class="ct-star ct-on" data-v="5">★</span>
+      </div>
+    </div>
+
+    <!-- ============ BREED SELECTOR (single) ============ -->
+    <div class="ct-section">
+      <h3><i data-lucide="dog" style="width:20px;height:20px;"></i> Which breed did you bring home?</h3>
+      <div class="ct-hint"><i data-lucide="paw-print" style="width:16px;height:16px;"></i> Pick your new best friend</div>
+      <div class="ct-chips" id="ctBreeds">
+        <span class="ct-chip" data-value="Cavapoo">🐶 Cavapoo</span>
+        <span class="ct-chip" data-value="Maltipoo">🐾 Maltipoo</span>
+        <span class="ct-chip" data-value="Bichonpoo">🐩 Bichonpoo</span>
+        <span class="ct-chip" data-value="Cavachon">🦴 Cavachon</span>
+        <span class="ct-chip" data-value="Dachshund">🌭 Dachshund</span>
+        <span class="ct-chip" data-value="Corgi">🐕 Corgi</span>
+        <span class="ct-chip" data-value="Shiba Inu">🦊 Shiba Inu</span>
+      </div>
+    </div>
+
+    <!-- ============ STAFF (multi) ============ -->
+    <div class="ct-section">
+      <h3><i data-lucide="users" style="width:20px;height:20px;"></i> Who made your day special?</h3>
+      <div class="ct-hint"><i data-lucide="mouse-pointer-click" style="width:16px;height:16px;"></i> Tap everyone who helped you</div>
+      <div class="ct-grid" id="ctStaff">
+        <div class="ct-item" data-value="Nelson">🙋‍♂️ Nelson</div>
+        <div class="ct-item" data-value="Kim">🙋‍♀️ Kim</div>
+      </div>
+    </div>
+
+    <!-- ============ QUALITIES (multi) ============ -->
+    <div class="ct-section">
+      <h3><i data-lucide="sparkles" style="width:20px;height:20px;"></i> What made your experience great?</h3>
+      <div class="ct-hint"><i data-lucide="heart-handshake" style="width:16px;height:16px;"></i> Choose all that apply — the more the better!</div>
+      <div class="ct-grid" id="ctQualities">
+        <div class="ct-item" data-value="Free Gifts">🎁 Free Gifts</div>
+        <div class="ct-item" data-value="Informative">📚 Informative</div>
+        <div class="ct-item" data-value="Helpful">🤝 Helpful</div>
+        <div class="ct-item" data-value="Care Tips">💡 Care Tips</div>
+        <div class="ct-item" data-value="Professional">👔 Professional</div>
+        <div class="ct-item" data-value="Great Prices">💰 Great Prices</div>
+      </div>
+    </div>
+
+    <!-- ============ GENERATE ============ -->
+    <div class="ct-action-hint" id="ctGenHint">
+      <i data-lucide="arrow-down" style="width:18px;height:18px;"></i>
+      Generate your review below!
+      <i data-lucide="arrow-down" style="width:18px;height:18px;"></i>
+    </div>
+
+    <button class="ct-btn" id="ctGenerateBtn">
+      <i data-lucide="sparkles" style="width:20px;height:20px;"></i>
+      Create My 5-Star Review
+    </button>
+
+    <!-- ============ OUTPUT ============ -->
+    <div class="ct-output" id="ctOutput"></div>
+    <div class="ct-counter ct-hidden" id="ctCounter"></div>
+
+    <div class="ct-hidden" id="ctActions">
+
+      <!-- Indicator: click Copy Review -->
+      <div class="ct-action-hint" id="ctCopyHint">
+        <i data-lucide="arrow-down" style="width:18px;height:18px;"></i>
+        Step 1: Copy your review
+        <i data-lucide="arrow-down" style="width:18px;height:18px;"></i>
+      </div>
+
+      <div class="ct-btn-row">
+        <button class="ct-btn ct-secondary" id="ctCopyBtn">
+          <i data-lucide="copy" style="width:18px;height:18px;"></i> Copy Review
+        </button>
+        <button class="ct-btn ct-secondary" id="ctRegenBtn">
+          <i data-lucide="refresh-cw" style="width:18px;height:18px;"></i> Regenerate
+        </button>
+      </div>
+
+      <!-- How-to steps -->
+      <div class="ct-steps" id="ctSteps">
+        <h4><i data-lucide="heart" style="width:20px;height:20px;"></i> Ready to post on Google? 🐾</h4>
+        <div class="ct-step"><div class="ct-num">1</div><div class="ct-step-txt">Tap the orange button below — it opens our Google review page.</div></div>
+        <div class="ct-step"><div class="ct-num">2</div><div class="ct-step-txt">Paste your review (it's already copied!) into the Google review box.</div></div>
+        <div class="ct-step"><div class="ct-num">3</div><div class="ct-step-txt">Add a cute photo of your new pup (optional) and hit Post! ⭐</div></div>
+      </div>
+
+      <!-- Indicator: click Post on Google -->
+      <div class="ct-action-hint" id="ctPostHint">
+        <i data-lucide="arrow-down" style="width:18px;height:18px;"></i>
+        Step 2: Post it on Google
+        <i data-lucide="arrow-down" style="width:18px;height:18px;"></i>
+      </div>
+
+      <div id="ctGoogleBtnWrap"></div>
+    </div>
+
+    <!-- ============ FOOTER ============ -->
+    <div class="ct-footer">
+      Curious Tails © &nbsp;|&nbsp; AVS Licensed: AS24J00046 &nbsp;|&nbsp; ACRA: 202420075D
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="ct-toast" id="ctToast">Review copied to clipboard! 🎉</div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ---------------- Configuration ---------------- */
+  var GOOGLE_REVIEW_URL = "https://g.page/r/CSQWSMYFGUwLEAE/review";
+
+  /* State */
+  var rating = 5;
+  var selectedBreed = "";
+  var selectedStaff = [];
+  var selectedQualities = [];
+
+  function $(id){ return document.getElementById(id); }
+
+  /* ---------------- Sample reviews (CSS avatars, no external images) ---------------- */
+  var SAMPLE_REVIEWS = [
+    {name:"Wei Ling", color:"#f97316", text:"We'd been looking for a healthy Cavapoo puppy for sale and Curious Tails in Balestier was by far the best. Nelson was so informative and our pup came home with an amazing starter kit!"},
+    {name:"Aiman", color:"#f59e0b", text:"Bought our Corgi here and couldn't be happier. Kim patiently shared all the care tips we needed, and the puppy is healthy and vet-checked. Highly recommend this AVS-licensed store."},
+    {name:"Priya", color:"#ea580c", text:"Our new Maltipoo is the sweetest! Nelson was incredibly helpful and professional, and the free gifts in the $500+ starter kit were such a lovely surprise."},
+    {name:"Marcus", color:"#d97706", text:"Searching for a Shiba Inu puppy for sale in Singapore led us to Curious Tails in Balestier. Great prices, super helpful staff, and a perfectly healthy little pup. Five stars!"},
+    {name:"Hui Min", color:"#fb923c", text:"Brought home a gorgeous Bichonpoo. Kim was so knowledgeable and gave us thorough care tips. Lovely, trustworthy AVS-licensed store — highly recommend."},
+    {name:"Daniel", color:"#c2410c", text:"Our Cavachon settled in beautifully. The team in Balestier was professional and genuinely caring, and the puppy came healthy and well-checked. Fantastic experience!"},
+    {name:"Siti", color:"#f59e0b", text:"Best puppy store in Balestier! We were looking for a Dachshund puppy for sale and Nelson made everything so easy. Loads of free gifts and great advice."},
+    {name:"Joel", color:"#fb923c", text:"Got our Corgi from Curious Tails and the whole experience was top-notch. Helpful, informative, fairly priced, and a healthy, happy puppy. Thank you Kim!"}
+  ];
+
+  function buildSlider(){
+    var track = $("ctTrack");
+    function cardHTML(r){
+      var initials = r.name.charAt(0).toUpperCase();
+      return ''
+        + '<div class="ct-card">'
+        +   '<div class="ct-avatar" style="background:'+r.color+'">'+initials+'</div>'
+        +   '<div>'
+        +     '<div class="ct-name">'+r.name+'</div>'
+        +     '<div class="ct-stars">★★★★★</div>'
+        +     '<div class="ct-text">'+r.text+'</div>'
+        +   '</div>'
+        + '</div>';
+    }
+    var html = "";
+    // Duplicate the set so the -50% keyframe loops seamlessly
+    for(var i=0;i<SAMPLE_REVIEWS.length;i++){ html += cardHTML(SAMPLE_REVIEWS[i]); }
+    for(var j=0;j<SAMPLE_REVIEWS.length;j++){ html += cardHTML(SAMPLE_REVIEWS[j]); }
+    track.innerHTML = html;
+  }
+
+  /* ---------------- Star rating selector ---------------- */
+  function setupRating(){
+    var stars = $("ctRating").querySelectorAll(".ct-star");
+    function paint(n){
+      stars.forEach(function(s){
+        var v = parseInt(s.getAttribute("data-v"),10);
+        s.classList.toggle("ct-on", v <= n);
+      });
+    }
+    stars.forEach(function(s){
+      s.addEventListener("click", function(){
+        rating = parseInt(this.getAttribute("data-v"),10);
+        paint(rating);
+      });
+      s.addEventListener("mouseenter", function(){
+        paint(parseInt(this.getAttribute("data-v"),10));
+      });
+    });
+    $("ctRating").addEventListener("mouseleave", function(){ paint(rating); });
+    paint(rating);
+  }
+
+  /* ---------------- Breed single-select ---------------- */
+  function setupBreeds(){
+    var chips = $("ctBreeds").querySelectorAll(".ct-chip");
+    chips.forEach(function(chip){
+      chip.addEventListener("click", function(){
+        chips.forEach(function(c){ c.classList.remove("ct-selected"); });
+        this.classList.add("ct-selected");
+        selectedBreed = this.getAttribute("data-value");
+      });
+    });
+  }
+
+  /* ---------------- Multi-select ---------------- */
+  function setupMultiSelect(gridId, store){
+    var items = $(gridId).querySelectorAll(".ct-item");
+    items.forEach(function(item){
+      item.addEventListener("click", function(){
+        var v = this.getAttribute("data-value");
+        this.classList.toggle("ct-selected");
+        var idx = store.indexOf(v);
+        if(idx > -1){ store.splice(idx,1); } else { store.push(v); }
+      });
+    });
+  }
+
+  /* ---------------- Natural list joiner ---------------- */
+  function joinNatural(arr){
+    if(arr.length === 0) return "";
+    if(arr.length === 1) return arr[0];
+    if(arr.length === 2) return arr[0]+" and "+arr[1];
+    return arr.slice(0,-1).join(", ")+", and "+arr[arr.length-1];
+  }
+
+  /* ---------------- AI prompt ---------------- */
+  function buildPrompt(){
+    var staffText = selectedStaff.length ? joinNatural(selectedStaff) : "the staff";
+    var qualText  = selectedQualities.length ? joinNatural(selectedQualities) : "helpful and professional";
+    var breed     = selectedBreed || "puppy";
+
+    return [
+      "Write a genuine-sounding, human "+rating+"-star Google review (2 to 4 sentences) from the perspective of a happy new puppy owner who PURCHASED (not adopted) their puppy from Curious Tails, a licensed puppy store in Singapore.",
+      "Requirements:",
+      "- Naturally weave in the phrase \"puppy for sale\" (or a close natural variant like \"looking for a "+breed+" puppy for sale\") inside a real sentence, NOT as a tacked-on keyword.",
+      "- Mention the breed by name, e.g. \"our new "+breed+"\".",
+      "- Mention the location \"Balestier\" naturally (e.g. \"their store in Balestier\" or \"the best puppy store in Balestier\").",
+      "- Weave in the staff member(s): "+staffText+".",
+      "- Weave in these qualities: "+qualText+".",
+      "- Include trust signals naturally: AVS licensed, a healthy / vet-checked puppy, and a $500+ starter kit (use one or two, do not list all robotically).",
+      "It must read like a real customer wrote it. Do NOT keyword-stuff, do NOT repeat keywords awkwardly, and use each key phrase at most once. Vary the sentence structure and word order. No quotation marks, no markdown, no preamble. Start directly with the review text."
+    ].join("\n");
+  }
+
+  /* ---------------- AI generation (Pollinations.ai) ---------------- */
+  function generateWithAI(){
+    var url = "https://text.pollinations.ai/prompt/" + encodeURIComponent(buildPrompt());
+    return fetch(url, { method:"GET", headers:{ "Accept":"text/plain" } })
+      .then(function(res){
+        if(!res.ok) throw new Error("Pollinations status "+res.status);
+        return res.text();
+      })
+      .then(function(txt){
+        var clean = (txt || "").trim()
+          .replace(/^["'\s]+|["'\s]+$/g,"")
+          .replace(/\*\*/g,"").replace(/[#`]/g,"");
+        if(clean.length < 30) throw new Error("Empty/short AI response");
+        return clean;
+      });
+  }
+
+  /* ---------------- Template fallbacks ---------------- */
+  function generateFromTemplates(){
+    var breed = selectedBreed || "puppy";
+    var staff = selectedStaff.length ? joinNatural(selectedStaff) : "the team";
+    var quals = selectedQualities.length ? joinNatural(selectedQualities).toLowerCase() : "helpful and professional";
+
+    var templates = [
+      "We'd been searching for a healthy "+breed+" puppy for sale in Singapore, and Curious Tails in Balestier was by far the best. "+staff+" was so "+quals+", and our new "+breed+" came home healthy with an amazing starter kit. Highly recommend this AVS-licensed store!",
+      "After looking everywhere for a "+breed+" puppy for sale, we finally found Curious Tails in Balestier and couldn't be happier. "+staff+" made the whole experience easy and was genuinely "+quals+", and our vet-checked "+breed+" settled in beautifully.",
+      "Bringing home our new "+breed+" from Curious Tails was wonderful. As an AVS-licensed store in Balestier, they made us feel confident the moment we walked in — "+staff+" was "+quals+", and the $500+ starter kit was such a generous surprise.",
+      "If you're looking for a "+breed+" puppy for sale, Curious Tails in Balestier is the place to go. Our pup arrived healthy and vet-checked, "+staff+" was incredibly "+quals+", and we left feeling completely supported as new owners.",
+      "Honestly the best puppy store in Balestier! We purchased our "+breed+" here and the experience was seamless — "+staff+" was "+quals+", the puppy was healthy, and being AVS licensed gave us real peace of mind.",
+      "We couldn't have asked for a better experience getting our "+breed+". Curious Tails in Balestier had exactly the healthy puppy for sale we'd hoped for, and "+staff+" was "+quals+" from start to finish. Came home with a fantastic starter kit too!"
+    ];
+    return templates[Math.floor(Math.random()*templates.length)];
+  }
+
+  /* ---------------- Render review ---------------- */
+  function showReview(text){
+    var out = $("ctOutput");
+    out.textContent = text;
+    out.classList.add("ct-show");
+
+    var counter = $("ctCounter");
+    counter.textContent = text.length + " characters";
+    counter.classList.remove("ct-hidden");
+
+    $("ctActions").classList.remove("ct-hidden");
+    $("ctSteps").style.display = "block";
+    buildGoogleButton();
+    out.scrollIntoView({ behavior:"smooth", block:"center" });
+  }
+
+  /* ---------------- Generate routine ---------------- */
+  function runGeneration(btn){
+    if(!selectedBreed){ alert("Please pick which breed you brought home first! 🐾"); return; }
+    if(selectedStaff.length === 0){ alert("Please select who helped you. 🙂"); return; }
+    if(selectedQualities.length === 0){ alert("Please select at least one thing you loved about your visit. ✨"); return; }
+
+    $("ctGenHint").classList.add("ct-hidden");
+
+    var original = btn.innerHTML;
+    btn.disabled = true;
+    btn.innerHTML = '<span class="ct-spinner"><i data-lucide="loader-2" style="width:20px;height:20px;"></i></span> Creating magic...';
+    refreshIcons();
+
+    generateWithAI()
+      .catch(function(){ return generateFromTemplates(); })
+      .then(function(review){ showReview(review); })
+      .catch(function(){ showReview(generateFromTemplates()); })
+      .finally(function(){
+        btn.disabled = false;
+        btn.innerHTML = original;
+        refreshIcons();
+      });
+  }
+
+  /* ---------------- Google review button ----------------
+     Uses a click handler instead of a plain href so the link
+     reliably breaks OUT of the WordPress/embed frame.
+     (g.page sends X-Frame-Options and refuses to load framed.)
+  ------------------------------------------------------- */
+  function openGoogleReview(){
+    // 1) Try opening a brand-new top-level tab
+    var win = window.open(GOOGLE_REVIEW_URL, "_blank", "noopener,noreferrer");
+    if(win){ return; }
+    // 2) Popup blocked — force navigation at the very top window (escapes the iframe)
+    try{
+      if(window.top && window.top !== window.self){
+        window.top.location.href = GOOGLE_REVIEW_URL;
+        return;
+      }
+    }catch(e){ /* cross-origin top access blocked, fall through */ }
+    // 3) Last resort
+    window.location.href = GOOGLE_REVIEW_URL;
+  }
+
+  function buildGoogleButton(){
+    var wrap = $("ctGoogleBtnWrap");
+    wrap.innerHTML = "";
+    var btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "ct-btn ct-google-btn";
+    btn.innerHTML = '<span class="ct-gicon">G</span> Post My 5-Star Review on Google';
+    btn.addEventListener("click", openGoogleReview);
+    wrap.appendChild(btn);
+    refreshIcons();
+  }
+
+  /* ---------------- Copy + toast ---------------- */
+  function copyReview(){
+    var text = $("ctOutput").textContent;
+    function done(){
+      showToast();
+      $("ctCopyHint").classList.add("ct-hidden"); // hide the copy indicator after copying
+    }
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(done).catch(fallbackCopy);
+    } else {
+      fallbackCopy();
+    }
+    function fallbackCopy(){
+      var ta = document.createElement("textarea");
+      ta.value = text;
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.select();
+      try{ document.execCommand("copy"); }catch(e){}
+      document.body.removeChild(ta);
+      done();
+    }
+  }
+
+  function showToast(){
+    var t = $("ctToast");
+    t.classList.add("ct-show");
+    setTimeout(function(){ t.classList.remove("ct-show"); }, 3000);
+  }
+
+  /* ---------------- Lucide init ---------------- */
+  function refreshIcons(){
+    try{ if(window.lucide && lucide.createIcons) lucide.createIcons(); }catch(e){}
+  }
+
+  /* ---------------- Init ---------------- */
+  function init(){
+    buildSlider();
+    setupRating();
+    setupBreeds();
+    setupMultiSelect("ctStaff", selectedStaff);
+    setupMultiSelect("ctQualities", selectedQualities);
+
+    $("ctGenerateBtn").addEventListener("click", function(){ runGeneration(this); });
+    $("ctRegenBtn").addEventListener("click", function(){ runGeneration(this); });
+    $("ctCopyBtn").addEventListener("click", copyReview);
+
+    refreshIcons();
+  }
+
+  if(document.readyState === "loading"){
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+})();
+</script>
+</body>
+</html>
