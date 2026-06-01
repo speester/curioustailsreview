@@ -19,37 +19,19 @@
    All CSS scoped under .ct-review to avoid theme conflicts
    ============================================================ */
 .ct-review{
-  --ct-orange:#f97316;
-  --ct-orange-d:#ea580c;
-  --ct-amber:#f59e0b;
+  --ct-orange:#f97316;--ct-orange-d:#ea580c;--ct-amber:#f59e0b;
   --ct-grad:linear-gradient(135deg,#f97316 0%,#f59e0b 100%);
-  --ct-cream:#fffdf8;
-  --ct-cream-2:#fff7ed;
-  --ct-gold:#f59e0b;
-  --ct-slate:#1e293b;
-  --ct-slate-soft:#475569;
-  --ct-line:#e7e2d9;
-  --ct-radius:18px;
-  --ct-shadow:0 10px 30px rgba(15,23,42,.07);
-  --ct-shadow-lg:0 18px 45px rgba(249,115,22,.20);
+  --ct-cream:#fffdf8;--ct-cream-2:#fff7ed;--ct-gold:#f59e0b;
+  --ct-slate:#1e293b;--ct-slate-soft:#475569;--ct-line:#e7e2d9;
+  --ct-radius:18px;--ct-shadow:0 10px 30px rgba(15,23,42,.07);--ct-shadow-lg:0 18px 45px rgba(249,115,22,.20);
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-  color:var(--ct-slate);
-  line-height:1.6;
-  box-sizing:border-box;
+  color:var(--ct-slate);line-height:1.6;box-sizing:border-box;
 }
 .ct-review *,.ct-review *::before,.ct-review *::after{box-sizing:border-box;}
+.ct-review .ct-container{max-width:760px;margin:0 auto;padding:0 0 56px;background:#fffdfa;border-radius:26px;position:relative;overflow:hidden;box-shadow:0 30px 80px rgba(15,23,42,.08);}
 
-.ct-review .ct-container{
-  max-width:760px;margin:0 auto;padding:0 0 56px;background:#fffdfa;
-  border-radius:26px;position:relative;overflow:hidden;box-shadow:0 30px 80px rgba(15,23,42,.08);
-}
-
-/* ---------- Hero ---------- */
-.ct-review .ct-hero{
-  position:relative;text-align:center;padding:46px 26px 38px;
-  background:linear-gradient(120deg,#fb923c,#f97316,#f59e0b,#fbbf24);
-  background-size:300% 300%;animation:ct-hero-shift 14s ease infinite;color:#fff;overflow:hidden;
-}
+/* Hero */
+.ct-review .ct-hero{position:relative;text-align:center;padding:46px 26px 38px;background:linear-gradient(120deg,#fb923c,#f97316,#f59e0b,#fbbf24);background-size:300% 300%;animation:ct-hero-shift 14s ease infinite;color:#fff;overflow:hidden;}
 @keyframes ct-hero-shift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
 .ct-review .ct-hero .ct-paw{position:absolute;opacity:.14;font-size:30px;animation:ct-float 7s ease-in-out infinite;pointer-events:none;}
 .ct-review .ct-hero .ct-paw:nth-child(1){top:14px;left:8%;animation-delay:0s;font-size:26px;}
@@ -64,10 +46,9 @@
 .ct-review .ct-progress{display:flex;align-items:center;justify-content:center;gap:7px;margin:18px auto 0;position:relative;z-index:1;}
 .ct-review .ct-dot{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.45);transition:all .3s ease;}
 .ct-review .ct-dot.ct-done{background:#fff;transform:scale(1.3);box-shadow:0 0 0 4px rgba(255,255,255,.25);}
-
 .ct-review .ct-body{padding:26px;}
 
-/* ---------- Slider ---------- */
+/* Slider */
 .ct-review .ct-slider{margin:8px 0 0;overflow:hidden;position:relative;}
 .ct-review .ct-slider::before,.ct-review .ct-slider::after{content:"";position:absolute;top:0;bottom:0;width:50px;z-index:2;pointer-events:none;}
 .ct-review .ct-slider::before{left:0;background:linear-gradient(90deg,#fffdfa,transparent);}
@@ -84,7 +65,7 @@
 .ct-review .ct-card .ct-stars{color:var(--ct-gold);font-size:.85rem;margin:2px 0 6px;}
 .ct-review .ct-card .ct-text{font-size:.83rem;color:var(--ct-slate-soft);line-height:1.45;}
 
-/* ---------- Group cards ---------- */
+/* Group cards */
 .ct-review .ct-group{background:var(--ct-cream-2);border:1px solid var(--ct-line);border-radius:22px;padding:22px;margin:22px 0;}
 .ct-review .ct-group-title{font-family:"Baloo 2",sans-serif;font-size:1.05rem;font-weight:700;color:var(--ct-orange-d);display:flex;align-items:center;gap:9px;margin:0 0 4px;}
 .ct-review .ct-group-sub{font-size:.85rem;color:var(--ct-slate-soft);margin:0 0 18px;}
@@ -95,14 +76,14 @@
 .ct-review .ct-hint{font-size:.83rem;color:var(--ct-slate-soft);margin-bottom:12px;display:flex;align-items:center;gap:6px;}
 .ct-review .ct-hint i{color:var(--ct-gold);}
 
-/* ---------- Rating ---------- */
+/* Rating */
 .ct-review .ct-rating{display:flex;gap:8px;justify-content:center;background:#fff;border:1px solid var(--ct-line);border-radius:var(--ct-radius);padding:16px;}
 .ct-review .ct-star{font-size:2.1rem;line-height:1;cursor:pointer;color:#dcd6cb;transition:transform .15s ease,color .15s ease;user-select:none;outline:none;}
 .ct-review .ct-star:hover,.ct-review .ct-star:focus-visible{transform:scale(1.2);}
 .ct-review .ct-star:focus-visible{outline:2px solid var(--ct-orange);outline-offset:3px;border-radius:4px;}
 .ct-review .ct-star.ct-on{color:var(--ct-gold);text-shadow:0 2px 8px rgba(245,158,11,.45);}
 
-/* ---------- Grids ---------- */
+/* Grids */
 .ct-review .ct-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:11px;}
 .ct-review .ct-item{padding:13px 15px;border:2px solid var(--ct-line);border-radius:14px;background:#fff;cursor:pointer;text-align:center;font-weight:600;color:var(--ct-slate);position:relative;outline:none;transition:transform .22s cubic-bezier(.34,1.56,.64,1),border-color .2s,background .2s,box-shadow .2s;}
 .ct-review .ct-item:hover,.ct-review .ct-item:focus-visible{border-color:var(--ct-amber);transform:translateY(-3px);box-shadow:var(--ct-shadow);}
@@ -111,7 +92,7 @@
 @keyframes ct-pop{0%{transform:translateY(-3px) scale(1)}50%{transform:translateY(-5px) scale(1.06)}100%{transform:translateY(-3px) scale(1)}}
 .ct-review .ct-item.ct-selected::after{content:"✓";position:absolute;top:-9px;right:-9px;width:23px;height:23px;border-radius:50%;background:var(--ct-gold);color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;box-shadow:0 3px 10px rgba(245,158,11,.5);}
 
-/* ---------- Chips ---------- */
+/* Chips */
 .ct-review .ct-chips{display:flex;flex-wrap:wrap;gap:9px;}
 .ct-review .ct-chip{padding:9px 16px;border:2px solid var(--ct-line);border-radius:999px;background:#fff;cursor:pointer;font-weight:600;color:var(--ct-slate);display:inline-flex;align-items:center;gap:6px;outline:none;transition:transform .2s,border-color .2s,background .2s,box-shadow .2s;}
 .ct-review .ct-chip:hover,.ct-review .ct-chip:focus-visible{border-color:var(--ct-amber);transform:translateY(-2px);box-shadow:var(--ct-shadow);}
@@ -122,7 +103,7 @@
 .ct-review .ct-breed-hero{text-align:center;font-size:46px;height:0;overflow:visible;opacity:0;transform:scale(.5);transition:all .35s cubic-bezier(.34,1.56,.64,1);}
 .ct-review .ct-breed-hero.ct-show{height:auto;opacity:1;transform:scale(1);margin:10px 0 -4px;animation:ct-float 3s ease-in-out infinite;}
 
-/* ---------- Buttons ---------- */
+/* Buttons */
 .ct-review .ct-btn{width:100%;border:none;cursor:pointer;border-radius:16px;padding:16px 24px;font-size:1.02rem;font-weight:700;display:flex;align-items:center;justify-content:center;gap:10px;margin:14px 0;min-height:58px;position:relative;overflow:hidden;background:var(--ct-grad);color:#fff;box-shadow:var(--ct-shadow-lg);transition:transform .2s,box-shadow .2s,opacity .2s;text-decoration:none;}
 .ct-review .ct-btn:hover{transform:translateY(-2px);box-shadow:0 22px 50px rgba(249,115,22,.3);}
 .ct-review .ct-btn:disabled{opacity:.65;cursor:not-allowed;transform:none;}
@@ -139,7 +120,7 @@
 @keyframes ct-spin{to{transform:rotate(360deg);}}
 .ct-review .ct-gicon{width:20px;height:20px;background:#fff;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-weight:800;color:var(--ct-orange);font-size:13px;}
 
-/* ---------- Output ---------- */
+/* Output */
 .ct-review .ct-output-wrap{margin:24px 0 6px;}
 .ct-review .ct-output{background:var(--ct-cream);border:1px solid var(--ct-line);border-left:5px solid var(--ct-gold);border-radius:var(--ct-radius);padding:22px;font-size:1.06rem;line-height:1.7;color:var(--ct-slate);min-height:90px;box-shadow:var(--ct-shadow);position:relative;}
 .ct-review .ct-output.ct-empty{color:#b9b3a7;font-style:italic;display:flex;align-items:center;justify-content:center;text-align:center;}
@@ -156,18 +137,16 @@
 .ct-review .ct-review-stars.ct-animate span:nth-child(4){animation-delay:.35s}
 .ct-review .ct-review-stars.ct-animate span:nth-child(5){animation-delay:.45s}
 @keyframes ct-star-in{to{opacity:1;transform:scale(1);}}
-/* engine tag + counter row */
 .ct-review .ct-meta-row{display:flex;justify-content:space-between;align-items:center;margin-top:6px;}
 .ct-review .ct-engine-tag{font-size:.72rem;font-weight:700;padding:3px 9px;border-radius:999px;}
 .ct-review .ct-engine-ai{color:#7c3aed;background:#f3e8ff;}
 .ct-review .ct-engine-tpl{color:#0369a1;background:#e0f2fe;}
 .ct-review .ct-counter{font-size:.78rem;color:var(--ct-slate-soft);}
-
 .ct-review .ct-confetti{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:5;}
 .ct-review .ct-confetti i{position:absolute;top:-12px;width:9px;height:9px;border-radius:2px;animation:ct-fall linear forwards;}
 @keyframes ct-fall{to{transform:translateY(360px) rotate(540deg);opacity:0;}}
 
-/* ---------- Hints / steps / toast / footer ---------- */
+/* Hints / steps / toast / footer */
 .ct-review .ct-action-hint{display:flex;align-items:center;justify-content:center;gap:8px;color:var(--ct-orange-d);font-weight:600;font-size:.92rem;background:var(--ct-cream-2);border:2px dashed var(--ct-amber);border-radius:14px;padding:10px;margin:8px 0;animation:ct-bob 2s ease-in-out infinite;}
 @keyframes ct-bob{0%,100%{transform:translateY(0);}50%{transform:translateY(-4px);}}
 .ct-review .ct-steps{display:none;background:var(--ct-cream-2);border:2px dashed var(--ct-orange);border-radius:var(--ct-radius);padding:18px;margin:18px 0;}
@@ -325,45 +304,30 @@
     googleReviewUrl: "https://g.page/r/CSQWSMYFGUwLEAE/review",
     businessName: "Curious Tails",
     location: "Balestier",
-    apiTimeoutMs: 8000,
-    debug: false,  // set true to log AI vs template in the console
     breeds: [
-      {name:"Cavapoo",   emoji:"🐶"},
-      {name:"Maltipoo",  emoji:"🐾"},
-      {name:"Bichonpoo", emoji:"🐩"},
-      {name:"Cavachon",  emoji:"🦴"},
-      {name:"Dachshund", emoji:"🌭"},
-      {name:"Corgi",     emoji:"🐕"},
-      {name:"Shiba Inu", emoji:"🦊"},
-      {name:"Poodle",    emoji:"🐩"}
+      {name:"Cavapoo",emoji:"🐶"},{name:"Maltipoo",emoji:"🐾"},{name:"Bichonpoo",emoji:"🐩"},
+      {name:"Cavachon",emoji:"🦴"},{name:"Dachshund",emoji:"🌭"},{name:"Corgi",emoji:"🐕"},
+      {name:"Shiba Inu",emoji:"🦊"},{name:"Poodle",emoji:"🐩"}
     ],
-    staff: [
-      {name:"Nelson", emoji:"🙋‍♂️"},
-      {name:"Kim",    emoji:"🙋‍♀️"}
-    ],
+    staff: [ {name:"Nelson",emoji:"🙋‍♂️"}, {name:"Kim",emoji:"🙋‍♀️"} ],
     qualities: [
-      {name:"Free Gifts",   emoji:"🎁"},
-      {name:"Informative",  emoji:"📚"},
-      {name:"Helpful",      emoji:"🤝"},
-      {name:"Care Tips",    emoji:"💡"},
-      {name:"Professional", emoji:"👔"},
-      {name:"Great Prices", emoji:"💰"}
+      {name:"Free Gifts",emoji:"🎁"},{name:"Informative",emoji:"📚"},{name:"Helpful",emoji:"🤝"},
+      {name:"Care Tips",emoji:"💡"},{name:"Professional",emoji:"👔"},{name:"Great Prices",emoji:"💰"}
     ],
     sampleReviews: [
-      {name:"Wei Ling", color:"#f97316", verified:true,  text:"We'd been looking for a healthy Cavapoo puppy for sale and Curious Tails in Balestier was by far the best. Nelson was so informative and our pup came home with an amazing starter kit!"},
-      {name:"Aiman",    color:"#f59e0b", verified:false, text:"Bought our Corgi here and couldn't be happier. Kim patiently shared all the care tips we needed, and the puppy is healthy and vet-checked. Highly recommend this AVS-licensed store."},
-      {name:"Priya",    color:"#ea580c", verified:true,  text:"Our new Maltipoo is the sweetest! Nelson was incredibly helpful and professional, and the free gifts in the $500+ starter kit were such a lovely surprise."},
-      {name:"Marcus",   color:"#d97706", verified:false, text:"Searching for a Shiba Inu puppy for sale in Singapore led us to Curious Tails in Balestier. Great prices, super helpful staff, and a perfectly healthy little pup. Five stars!"},
-      {name:"Hui Min",  color:"#fb923c", verified:true,  text:"Brought home a gorgeous Bichonpoo. Kim was so knowledgeable and gave us thorough care tips. Lovely, trustworthy AVS-licensed store, highly recommend."},
-      {name:"Daniel",   color:"#c2410c", verified:false, text:"Our Cavachon settled in beautifully. The team in Balestier was professional and genuinely caring, and the puppy came healthy and well-checked. Fantastic experience!"},
-      {name:"Siti",     color:"#f59e0b", verified:true,  text:"Best puppy store in Balestier! We were looking for a Dachshund puppy for sale and Nelson made everything so easy. Loads of free gifts and great advice."},
-      {name:"Joel",     color:"#fb923c", verified:false, text:"Got our Corgi from Curious Tails and the whole experience was top-notch. Helpful, informative, fairly priced, and a healthy, happy puppy. Thank you Kim!"}
+      {name:"Wei Ling",color:"#f97316",verified:true, text:"We'd been looking for a healthy Cavapoo puppy for sale and Curious Tails in Balestier was by far the best. Nelson was so informative and our pup came home with an amazing starter kit!"},
+      {name:"Mark",color:"#f59e0b",verified:false,text:"Bought our Corgi here and couldn't be happier. Kim patiently shared all the care tips we needed, and the puppy is healthy and vet-checked. Highly recommend this AVS-licensed store."},
+      {name:"Priya",color:"#ea580c",verified:true, text:"Our new Maltipoo is the sweetest! Nelson was incredibly helpful and professional, and the free gifts in the $500+ starter kit were such a lovely surprise."},
+      {name:"Marcus",color:"#d97706",verified:false,text:"Searching for a Shiba Inu puppy for sale in Singapore led us to Curious Tails in Balestier. Great prices, super helpful staff, and a perfectly healthy little pup. Five stars!"},
+      {name:"Hui Min",color:"#fb923c",verified:true, text:"Brought home a gorgeous Bichonpoo. Kim was so knowledgeable and gave us thorough care tips. Lovely, trustworthy AVS-licensed store, highly recommend."},
+      {name:"Daniel",color:"#c2410c",verified:false,text:"Our Cavachon settled in beautifully. The team in Balestier was professional and genuinely caring, and the puppy came healthy and well-checked. Fantastic experience!"},
+      {name:"Han Wei",color:"#f59e0b",verified:true, text:"Best puppy store in Balestier! We were looking for a Dachshund puppy for sale and Nelson made everything so easy. Loads of free gifts and great advice."},
+      {name:"Joel",color:"#fb923c",verified:false,text:"Got our Corgi from Curious Tails and the whole experience was top-notch. Helpful, informative, fairly priced, and a healthy, happy puppy. Thank you Kim!"}
     ]
   };
 
   var rating = 5, selectedBreed = "", selectedStaff = [], selectedQualities = [], isGenerating = false;
   function $(id){ return document.getElementById(id); }
-  function dlog(){ if(CONFIG.debug) console.log.apply(console, arguments); }
 
   /* ---------------- Slider ---------------- */
   function buildSlider(){
@@ -372,8 +336,7 @@
         + '<div class="ct-avatar" style="background:'+r.color+'">'+r.name.charAt(0).toUpperCase()+'</div>'
         + '<div><div class="ct-name-row"><span class="ct-name">'+r.name+'</span>'
         + (r.verified?'<span class="ct-gverify">✓ Google</span>':'')+'</div>'
-        + '<div class="ct-stars">★★★★★</div>'
-        + '<div class="ct-text">'+r.text+'</div></div></div>';
+        + '<div class="ct-stars">★★★★★</div><div class="ct-text">'+r.text+'</div></div></div>';
     }
     var html="";
     for(var i=0;i<CONFIG.sampleReviews.length;i++) html += card(CONFIG.sampleReviews[i]);
@@ -381,207 +344,288 @@
     $("ctTrack").innerHTML = html;
   }
 
-  /* ---------------- Build selectors from CONFIG ---------------- */
+  /* ---------------- Build selectors ---------------- */
   function buildBreeds(){
     var html="";
     CONFIG.breeds.forEach(function(b){
-      html += '<span class="ct-chip" data-value="'+b.name+'" role="radio" tabindex="0" aria-checked="false">'
-            + '<span class="ct-chip-emoji">'+b.emoji+'</span> '+b.name+'</span>';
+      html += '<span class="ct-chip" data-value="'+b.name+'" role="radio" tabindex="0" aria-checked="false"><span class="ct-chip-emoji">'+b.emoji+'</span> '+b.name+'</span>';
     });
     $("ctBreeds").innerHTML = html;
   }
   function buildGrid(el, list){
     var html="";
-    list.forEach(function(o){
-      html += '<div class="ct-item" data-value="'+o.name+'" role="checkbox" tabindex="0" aria-checked="false">'+o.emoji+' '+o.name+'</div>';
-    });
+    list.forEach(function(o){ html += '<div class="ct-item" data-value="'+o.name+'" role="checkbox" tabindex="0" aria-checked="false">'+o.emoji+' '+o.name+'</div>'; });
     el.innerHTML = html;
   }
 
   /* ---------------- Progress ---------------- */
   function updateProgress(){
-    function mark(step,done){ var d=$("ctProgress").querySelector('[data-step="'+step+'"]'); if(d) d.classList.toggle("ct-done",!!done); }
-    mark("rating", rating>0);
-    mark("breed", !!selectedBreed);
-    mark("staff", selectedStaff.length>0);
-    mark("quality", selectedQualities.length>0);
+    function mark(s,d){ var el=$("ctProgress").querySelector('[data-step="'+s+'"]'); if(el) el.classList.toggle("ct-done",!!d); }
+    mark("rating",rating>0); mark("breed",!!selectedBreed); mark("staff",selectedStaff.length>0); mark("quality",selectedQualities.length>0);
   }
 
   /* ---------------- Rating ---------------- */
   function setupRating(){
-    var stars = $("ctRating").querySelectorAll(".ct-star");
-    function paint(n){ stars.forEach(function(s){ var v=+s.getAttribute("data-v"); s.classList.toggle("ct-on",v<=n); s.setAttribute("aria-checked", v===n?"true":"false"); }); }
+    var stars=$("ctRating").querySelectorAll(".ct-star");
+    function paint(n){ stars.forEach(function(s){ var v=+s.getAttribute("data-v"); s.classList.toggle("ct-on",v<=n); s.setAttribute("aria-checked",v===n?"true":"false"); }); }
     function set(v){ rating=v; paint(rating); updateProgress(); }
     stars.forEach(function(s){
       var v=+s.getAttribute("data-v");
-      s.addEventListener("click", function(){ set(v); });
-      s.addEventListener("mouseenter", function(){ paint(v); });
-      s.addEventListener("keydown", function(e){ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); set(v); } });
+      s.addEventListener("click",function(){ set(v); });
+      s.addEventListener("mouseenter",function(){ paint(v); });
+      s.addEventListener("keydown",function(e){ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); set(v); } });
     });
-    $("ctRating").addEventListener("mouseleave", function(){ paint(rating); });
+    $("ctRating").addEventListener("mouseleave",function(){ paint(rating); });
     paint(rating);
   }
 
   /* ---------------- Breeds (single) ---------------- */
   function setupBreeds(){
-    var chips = $("ctBreeds").querySelectorAll(".ct-chip");
+    var chips=$("ctBreeds").querySelectorAll(".ct-chip");
     chips.forEach(function(chip){
       function choose(){
         chips.forEach(function(c){ c.classList.remove("ct-selected"); c.setAttribute("aria-checked","false"); });
         chip.classList.add("ct-selected"); chip.setAttribute("aria-checked","true");
-        selectedBreed = chip.getAttribute("data-value");
-        var match = CONFIG.breeds.filter(function(b){return b.name===selectedBreed;})[0];
-        var hero=$("ctBreedHero"); hero.textContent = match?match.emoji:"🐾"; hero.classList.add("ct-show");
+        selectedBreed=chip.getAttribute("data-value");
+        var m=CONFIG.breeds.filter(function(b){return b.name===selectedBreed;})[0];
+        var h=$("ctBreedHero"); h.textContent=m?m.emoji:"🐾"; h.classList.add("ct-show");
         updateProgress();
       }
-      chip.addEventListener("click", choose);
-      chip.addEventListener("keydown", function(e){ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); choose(); } });
+      chip.addEventListener("click",choose);
+      chip.addEventListener("keydown",function(e){ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); choose(); } });
     });
   }
 
   /* ---------------- Multi-select ---------------- */
   function setupMulti(gridId, store){
-    var items = $(gridId).querySelectorAll(".ct-item");
+    var items=$(gridId).querySelectorAll(".ct-item");
     items.forEach(function(item){
       function toggle(){
         var v=item.getAttribute("data-value");
         item.classList.toggle("ct-selected");
         var on=item.classList.contains("ct-selected");
-        item.setAttribute("aria-checked", on?"true":"false");
+        item.setAttribute("aria-checked",on?"true":"false");
         var i=store.indexOf(v);
         if(i>-1) store.splice(i,1); else store.push(v);
         updateProgress();
       }
-      item.addEventListener("click", toggle);
-      item.addEventListener("keydown", function(e){ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); toggle(); } });
+      item.addEventListener("click",toggle);
+      item.addEventListener("keydown",function(e){ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); toggle(); } });
     });
   }
 
-  /* ---------------- Helpers ---------------- */
+  /* ================= RANDOMIZATION HELPERS ================= */
+  function pick(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
+  function maybe(p){ return Math.random()<p; }
+  function shuffle(a){ a=a.slice(); for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;} return a; }
   function joinNatural(a){ if(!a.length)return""; if(a.length===1)return a[0]; if(a.length===2)return a[0]+" and "+a[1]; return a.slice(0,-1).join(", ")+", and "+a[a.length-1]; }
 
-  /* ---------------- AI prompt (stricter grammar constraints) ---------------- */
-  function buildPrompt(){
-    var staffText = selectedStaff.length?joinNatural(selectedStaff):"the staff";
-    var qualText  = selectedQualities.length?joinNatural(selectedQualities):"helpful and professional";
-    var breed = selectedBreed||"puppy";
+  function staffName(){
+    if(!selectedStaff.length) return pick(["the team","the owners","the staff","Nelson and Kim"]);
+    if(selectedStaff.length===1) return selectedStaff[0];
+    return maybe(0.5)?selectedStaff[0]+" and "+selectedStaff[1]:selectedStaff[1]+" and "+selectedStaff[0];
+  }
+  function staffWas(){ return selectedStaff.length===1?"was":"were"; }
+  function breedRef(){ var b=selectedBreed||"puppy"; return pick(["our new "+b,"our "+b,"our little "+b,"our "+b+" pup","our new furry family member","our "+b]); }
+  function breedSimple(){ return selectedBreed||"puppy"; }
+
+  /* ================= QUALITY FRAGMENTS (20 each) ================= */
+  var QUALITY_FRAGMENTS = {
+    "Free Gifts": [
+      "threw in lots of thoughtful free gifts","spoiled us with plenty of freebies","included so many useful free gifts","gave us a generous bundle of free goodies",
+      "surprised us with loads of free extras","packed in tons of helpful freebies","sent us home with a bag full of free gifts","included so many lovely extras at no charge",
+      "showered our pup with free goodies","added in plenty of complimentary supplies","gave us heaps of free puppy essentials","included a generous set of free gifts with the puppy",
+      "treated us to lots of thoughtful freebies","made sure we left with plenty of free goodies","tossed in so many useful extras for free","were so generous with the free gifts",
+      "gave us a wonderful bundle of complimentary items","included free toys, treats and more","surprised us with a lovely free starter bundle","didn't skimp at all on the free gifts"
+    ],
+    "Informative": [
+      "explained everything so clearly","were incredibly knowledgeable","patiently walked us through every detail","shared so much helpful information",
+      "answered every single question we had","gave us clear, detailed explanations","knew their stuff inside and out","broke everything down in a way that was easy to follow",
+      "were a wealth of useful knowledge","took the time to explain the whole process","made sure we understood everything before deciding","shared expert advice without any jargon",
+      "were happy to explain things more than once","gave us all the information we needed and more","were genuinely well-informed about every breed","left no question unanswered",
+      "guided us through each step with clear explanations","were so thorough in everything they told us","explained the care, feeding and routine in detail","were patient and informative throughout"
+    ],
+    "Helpful": [
+      "were so helpful throughout","went above and beyond to help us","were genuinely helpful from start to finish","helped us with everything we needed",
+      "couldn't have been more helpful","were always ready to lend a hand","made everything easy for us","were incredibly accommodating",
+      "helped us every step of the way","were quick to assist with anything we asked","bent over backwards to help us out","were so supportive throughout the whole process",
+      "made sure we had everything sorted","were endlessly patient and helpful","helped us feel completely at ease","were happy to help with even the small things",
+      "took care of everything for us","were a huge help as first-time owners","guided us through it all so kindly","were attentive and genuinely helpful"
+    ],
+    "Care Tips": [
+      "shared plenty of practical care tips","gave us clear guidance on feeding and care","taught us exactly how to care for our pup","offered great advice on the daily routine",
+      "walked us through feeding, grooming and routine","made sure we knew how to settle our pup in","gave us brilliant advice on puppy care","shared useful tips for the first few weeks",
+      "explained the feeding schedule in detail","gave us a clear care routine to follow","offered thoughtful tips on training and care","made sure we felt prepared to care for our pup",
+      "shared everything we needed to know about looking after a puppy","gave us handy tips that made the transition easy","patiently explained how to care for our new pup","offered practical, real-world care advice",
+      "showed us how to handle the first days at home","gave us a wonderful crash course in puppy care","shared their best tips for a happy, healthy pup","made caring for a new puppy feel manageable"
+    ],
+    "Professional": [
+      "were warm and professional","handled everything professionally","were professional and reassuring","made the whole process smooth and professional",
+      "were polite, patient and professional","kept everything organised and professional","were professional from start to finish","conducted everything in a professional manner",
+      "were courteous and highly professional","ran everything smoothly and professionally","were efficient and professional throughout","handled the paperwork professionally and quickly",
+      "were professional yet genuinely friendly","made it all feel seamless and professional","were impressively professional and well-organised","treated us professionally every step of the way",
+      "were both professional and personable","kept the whole experience polished and professional","were professional, calm and reassuring","carried themselves with real professionalism"
+    ],
+    "Great Prices": [
+      "offered really reasonable prices","had transparent, fair pricing","gave us great value for money","had honest and affordable prices",
+      "kept the pricing fair and upfront","offered surprisingly good prices","had the best prices we came across","gave us excellent value overall",
+      "were upfront and fair about the cost","had pricing that felt genuinely fair","offered great prices with no hidden surprises","were very reasonable on price",
+      "made sure the pricing was clear and honest","gave us a fair deal without any pressure","had competitive, transparent pricing","offered wonderful value for everything included",
+      "kept their prices honest and reasonable","had prices that were hard to beat","were fair and clear about every cost","gave us great value with everything bundled in"
+    ]
+  };
+
+  function qualityClauses(){
+    var qs=shuffle(selectedQualities);
+    if(!qs.length) return staffWas()+" "+pick(["so helpful and friendly","warm and professional","patient and knowledgeable"]);
+    var n = qs.length===1?1:(maybe(0.65)?2:1);
+    var chosen=qs.slice(0,n);
+    var frags=chosen.map(function(q){ return pick(QUALITY_FRAGMENTS[q]||["were "+q.toLowerCase()]); });
+    return joinNatural(frags);
+  }
+
+  /* ================= SENTENCE POOLS (20 each) ================= */
+  function openers(){
+    var b=breedSimple(),L=CONFIG.location,biz=CONFIG.businessName;
     return [
-      "Write a genuine-sounding, human "+rating+"-star Google review (2 to 4 sentences) from the perspective of a happy new puppy owner who PURCHASED (not adopted) their puppy from "+CONFIG.businessName+", a licensed puppy store in Singapore.",
-      "Requirements:",
-      "- Naturally weave in the phrase \"puppy for sale\" (or a close variant like \"looking for a "+breed+" puppy for sale\") inside a real sentence, NOT as a tacked-on keyword.",
-      "- Mention the breed by name, e.g. \"our new "+breed+"\".",
-      "- Mention the location \""+CONFIG.location+"\" naturally.",
-      "- Weave in the staff member(s): "+staffText+".",
-      "- Reflect these positive aspects of the experience, rephrasing them into natural, grammatically correct sentences (do NOT insert them verbatim as a list): "+qualText+". For example, if an aspect is 'Free Gifts', write 'they included some lovely free gifts' rather than 'was free gifts'. If an aspect is 'Care Tips', write 'shared helpful care tips'. Each aspect must fit grammatically into its sentence.",
-      "- Every sentence must be grammatically complete and correct. Never place a noun phrase directly after 'was' or 'were' where an adjective belongs (e.g. NEVER write 'Kim was free gifts').",
-      "- Include trust signals naturally: AVS licensed, a healthy / vet-checked puppy, and a $500+ starter kit (use one or two, not all robotically).",
-      "- Do NOT use em dashes, en dashes, or hyphen dashes (—, –). Use commas or periods instead.",
-      "- Do NOT use semicolons or quotation marks.",
-      "Read like a real customer wrote it. Do NOT keyword-stuff and use each key phrase at most once. Vary sentence structure. No markdown, no preamble. Start directly with the review text."
-    ].join("\n");
-  }
-
-  /* ---------------- AI generation w/ timeout + validation ---------------- */
-  function generateWithAI(){
-    var controller = new AbortController();
-    var timer = setTimeout(function(){ controller.abort(); }, CONFIG.apiTimeoutMs);
-    var url = "https://text.pollinations.ai/prompt/" + encodeURIComponent(buildPrompt());
-    return fetch(url, { method:"GET", headers:{ "Accept":"text/plain" }, signal:controller.signal })
-      .then(function(res){ clearTimeout(timer); if(!res.ok) throw new Error("status "+res.status); return res.text(); })
-      .then(function(txt){
-        var clean=(txt||"").trim()
-          .replace(/^(here'?s|sure|review:?)[^\n]*\n/i,"")
-          .replace(/^["'\s]+|["'\s]+$/g,"")
-          .replace(/\*\*/g,"").replace(/[#`]/g,"")
-          .replace(/[—–]/g,", ")     // strip any dashes the model slips in
-          .replace(/\s+,/g,",").trim();
-        if(!isValidReview(clean)) throw new Error("validation failed");
-        return clean;
-      });
-  }
-
-  // Validate output before it touches the public profile
-  function isValidReview(t){
-    if(!t || t.length < 120 || t.length > 650) return false;
-    if(selectedBreed && t.toLowerCase().indexOf(selectedBreed.toLowerCase()) === -1) return false;
-    if(t.toLowerCase().indexOf(CONFIG.location.toLowerCase()) === -1) return false;
-    if(/\bI cannot\b|\bas an ai\b|\bsorry\b/i.test(t)) return false;
-    // grammar guard: catch "was/were <noun-quality>" mistakes
-    if(/\b(was|were)\s+(free gifts|care tips|great prices)\b/i.test(t)) return false;
-    return true;
-  }
-
-  /* ---------------- Quality clauses (grammatically safe) ---------------- */
-  function qualityClauses(qualities){
-    var map = {
-      "Free Gifts":   "spoiled us with thoughtful free gifts",
-      "Informative":  "was incredibly informative",
-      "Helpful":      "was so helpful",
-      "Care Tips":    "shared plenty of useful care tips",
-      "Professional": "was wonderfully professional",
-      "Great Prices": "offered great prices"
-    };
-    var phrases = qualities.map(function(q){ return map[q] || ("was "+q.toLowerCase()); });
-    return joinNatural(phrases);
-  }
-
-  /* ---------------- Template fallbacks ---------------- */
-  function generateFromTemplates(){
-    var b=selectedBreed||"puppy",
-        s=selectedStaff.length?joinNatural(selectedStaff):"the team",
-        q=selectedQualities.length?qualityClauses(selectedQualities):"was helpful and professional",
-        L=CONFIG.location;
-    var t=[
-      "We'd been searching for a healthy "+b+" puppy for sale in Singapore, and "+CONFIG.businessName+" in "+L+" was by far the best. "+s+" "+q+", and our new "+b+" came home healthy with an amazing starter kit. Highly recommend this AVS-licensed store!",
-      "After looking everywhere for a "+b+" puppy for sale, we finally found "+CONFIG.businessName+" in "+L+" and couldn't be happier. "+s+" "+q+", and our vet-checked "+b+" settled in beautifully.",
-      "Bringing home our new "+b+" from "+CONFIG.businessName+" was wonderful. As an AVS-licensed store in "+L+", they made us feel confident from the start. "+s+" "+q+", and the $500+ starter kit was such a generous surprise.",
-      "If you're looking for a "+b+" puppy for sale, "+CONFIG.businessName+" in "+L+" is the place to go. Our pup arrived healthy and vet-checked, and "+s+" "+q+". We left feeling completely supported as new owners.",
-      "Honestly the best puppy store in "+L+"! We purchased our "+b+" here and the experience was seamless. "+s+" "+q+", the puppy was healthy, and being AVS licensed gave us real peace of mind.",
-      "We couldn't have asked for a better experience getting our "+b+". "+CONFIG.businessName+" in "+L+" had exactly the healthy puppy for sale we'd hoped for, and "+s+" "+q+" from start to finish. Came home with a fantastic starter kit too!",
-      "So glad we chose "+CONFIG.businessName+" for our "+b+"! Their "+L+" store felt trustworthy and warm, "+s+" "+q+", and our healthy little pup came with a wonderful starter kit. Easily the best puppy for sale we found in Singapore.",
-      "Our "+b+" puppy is the perfect addition to the family. We visited "+CONFIG.businessName+" in "+L+" after months of searching for a healthy puppy for sale, and "+s+" "+q+" every step of the way. A genuinely lovely, AVS-licensed store."
+      "We'd been looking everywhere for a healthy "+b+" puppy for sale in Singapore, and "+biz+" in "+L+" turned out to be the best by far.",
+      "I was searching for a "+b+" puppy for sale and I'm so glad I found "+biz+" over in "+L+".",
+      "Had such a wonderful experience bringing home "+breedRef()+" from "+biz+" in "+L+".",
+      "As first-time dog owners, we couldn't have asked for a better place than "+biz+" in "+L+" to find "+breedRef()+".",
+      "A casual visit to their "+L+" store ended with us happily bringing home a "+b+", and we have zero regrets.",
+      "Just brought home a healthy "+b+" from "+biz+", and the whole purchase was smooth and genuinely fun.",
+      "So happy with our purchase from "+biz+"! We'd been after a "+b+" puppy for sale in Singapore for a while.",
+      "If you're looking for a "+b+" puppy for sale, their "+L+" store is honestly the place to go.",
+      "After months of searching for the right "+b+", we found "+biz+" in "+L+" and everything just clicked.",
+      "We visited a few places before "+biz+", but their "+L+" store stood out immediately.",
+      "Bringing home "+breedRef()+" from "+biz+" has been one of the best decisions we've made.",
+      "From the moment we enquired about a "+b+" puppy for sale, "+biz+" in "+L+" felt different in the best way.",
+      "We weren't even sure we were ready, but a visit to "+biz+" in "+L+" sealed the deal on our "+b+".",
+      "Finding a healthy "+b+" puppy for sale in Singapore felt daunting until we walked into "+biz+" in "+L+".",
+      "Our search for the perfect "+b+" ended the moment we stepped into "+biz+"'s "+L+" store.",
+      "What a lovely experience picking up "+breedRef()+" from "+biz+" in "+L+".",
+      "We did a lot of research before choosing where to buy, and "+biz+" in "+L+" was clearly the right call.",
+      "Couldn't recommend "+biz+" in "+L+" enough after bringing home our "+b+".",
+      "We'd been comparing breeders for weeks, and "+biz+" in "+L+" stood head and shoulders above the rest.",
+      "Walked into "+biz+" looking for a "+b+" puppy for sale and walked out with the happiest little addition to our family."
     ];
-    return t[Math.floor(Math.random()*t.length)];
+  }
+
+  function staffSentences(){
+    var s=staffName(),w=staffWas();
+    return [
+      s+" "+w+" "+qualityClauses()+".",
+      s+" "+w+" so patient with all our questions and "+qualityClauses()+".",
+      "From the moment we walked in, "+s+" "+w+" warm and welcoming, and "+qualityClauses()+".",
+      s+" "+qualityClauses()+", and made sure we felt confident every step of the way.",
+      "What really stood out was how "+s+" "+qualityClauses()+" without ever rushing us.",
+      s+" "+w+" lovely to deal with and "+qualityClauses()+".",
+      "Honestly, "+s+" "+qualityClauses()+", which made the whole thing stress-free.",
+      "We could tell "+s+" genuinely cared, and they "+qualityClauses()+".",
+      s+" "+w+" friendly, approachable, and "+qualityClauses()+".",
+      "Throughout the visit, "+s+" "+qualityClauses()+", and never made us feel pressured.",
+      s+" "+w+" fantastic with us, and "+qualityClauses()+".",
+      "Big thanks to "+s+", who "+qualityClauses()+".",
+      s+" "+qualityClauses()+", and clearly loves what they do.",
+      "We really appreciated how "+s+" "+qualityClauses()+".",
+      s+" "+w+" kind, attentive, and "+qualityClauses()+".",
+      "Right from our first enquiry, "+s+" "+qualityClauses()+".",
+      s+" "+w+" so genuine, and "+qualityClauses()+".",
+      "It was clear "+s+" knew their stuff, as they "+qualityClauses()+".",
+      s+" made us feel right at home and "+qualityClauses()+".",
+      "We're so grateful to "+s+", who "+qualityClauses()+"."
+    ];
+  }
+
+  function trustSentences(){
+    var b=breedSimple();
+    return [
+      "Our "+b+" is healthy, active, and clearly very well taken care of.",
+      "The puppy came home healthy and vet-checked, which gave us real peace of mind.",
+      "Being an AVS-licensed store, everything felt trustworthy and above board.",
+      "The starter kit had everything a new owner could need, which made the first days so easy.",
+      "They even arranged to deliver our pup to our home and helped with all the paperwork.",
+      "We loved the aftercare support; you can tell they truly care about the pups and the owners.",
+      "The $500+ starter pack was such a generous surprise and got us set up right away.",
+      "They handled the licence transfer and guided us through the ownership course too.",
+      "Our pup was clean, well-socialised, and full of energy when we brought it home.",
+      "Even after we got home, they were quick to reply whenever we had a question.",
+      "The transparency around health checks really put our minds at ease.",
+      "They gave us ample time to interact with the puppies before we decided.",
+      "The full vaccination was already covered, which showed how much they care.",
+      "You can tell they're not just making a sale; they want the best start for both pup and owner.",
+      "Our little one settled in beautifully thanks to all their guidance.",
+      "Everything from the health records to the paperwork was handled seamlessly.",
+      "It's reassuring to buy from a proper licensed store that genuinely cares.",
+      "They followed up after a few days just to check how our pup was settling in.",
+      "The puppy was happy, healthy, and clearly raised in a loving environment.",
+      "We felt fully prepared to bring our pup home, right down to the smallest detail."
+    ];
+  }
+
+  function closers(){
+    var biz=CONFIG.businessName,s=staffName();
+    return [
+      "Highly recommend "+biz+" to anyone looking for a trustworthy puppy store!",
+      "Couldn't be happier, thank you "+s+"!",
+      "Easily the best puppy experience we've had in Singapore.",
+      "We'd recommend them to any new fur parent in a heartbeat.",
+      "Thank you for everything, we're absolutely in love with our new family member!",
+      "Genuinely the best decision we made, highly recommended.",
+      "If you're after a healthy, happy puppy, look no further.",
+      "Five stars isn't enough, truly grateful to "+s+".",
+      "We'll definitely be pointing friends their way.",
+      "So thankful we chose "+biz+", our home feels complete now.",
+      "Wholeheartedly recommend them to anyone thinking of getting a puppy.",
+      "Thank you "+biz+" for such a wonderful start to pet parenthood!",
+      "We couldn't be more pleased, an easy five stars.",
+      "Will absolutely return and recommend without hesitation.",
+      "If you want peace of mind buying a puppy, this is the place.",
+      "Forever grateful to the team, our pup is the best thing that's happened to us.",
+      "Honestly couldn't recommend "+biz+" highly enough.",
+      "A truly lovely experience from start to finish, thank you!",
+      "Our family is complete now, thank you "+s+" and team.",
+      "Hands down the best puppy store we found, highly recommended."
+    ];
+  }
+
+  /* ================= ASSEMBLY ================= */
+  function generateFromTemplates(){
+    var parts=[];
+    parts.push(pick(openers()));
+    parts.push(pick(staffSentences()));
+    var trust=shuffle(trustSentences());
+    parts.push(trust[0]);
+    if(maybe(0.45)) parts.push(trust[1]);
+    parts.push(pick(closers()));
+    // occasionally a shorter review for natural variety
+    if(maybe(0.12)) parts=[ pick(openers()), pick(trustSentences()), pick(closers()) ];
+    var seen={};
+    return parts.filter(function(s){ if(seen[s])return false; seen[s]=true; return true; }).join(" ");
   }
 
   /* ---------------- Confetti ---------------- */
   function celebrate(box){
     box.classList.add("ct-celebrate");
-    setTimeout(function(){ box.classList.remove("ct-celebrate"); }, 1100);
+    setTimeout(function(){ box.classList.remove("ct-celebrate"); },1100);
     var layer=document.createElement("div"); layer.className="ct-confetti";
     var colors=["#f97316","#f59e0b","#fbbf24","#fb923c","#fde68a"];
-    for(var i=0;i<26;i++){
-      var p=document.createElement("i");
-      p.style.left=Math.random()*100+"%";
-      p.style.background=colors[i%colors.length];
-      p.style.animationDuration=(1.1+Math.random()*0.9)+"s";
-      p.style.animationDelay=(Math.random()*0.25)+"s";
-      layer.appendChild(p);
-    }
+    for(var i=0;i<26;i++){ var p=document.createElement("i"); p.style.left=Math.random()*100+"%"; p.style.background=colors[i%colors.length]; p.style.animationDuration=(1.1+Math.random()*0.9)+"s"; p.style.animationDelay=(Math.random()*0.25)+"s"; layer.appendChild(p); }
     box.appendChild(layer);
-    setTimeout(function(){ if(layer.parentNode) layer.parentNode.removeChild(layer); }, 2400);
+    setTimeout(function(){ if(layer.parentNode) layer.parentNode.removeChild(layer); },2400);
   }
 
   /* ---------------- Render review ---------------- */
-  function showReview(text, engine){
+  function showReview(text){
     var out=$("ctOutput");
-    out.classList.remove("ct-empty");
-    out.textContent=text;
-    out.classList.add("ct-filled");
-
+    out.classList.remove("ct-empty"); out.textContent=text; out.classList.add("ct-filled");
     var sr=$("ctReviewStars");
     sr.innerHTML="<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>";
     sr.classList.remove("ct-animate"); void sr.offsetWidth; sr.classList.add("ct-animate");
-
     celebrate(out);
-
-    // engine tag + counter
-    var tag=$("ctEngineTag");
-    if(engine==="ai"){ tag.textContent="✨ AI written"; tag.className="ct-engine-tag ct-engine-ai"; }
-    else { tag.textContent="📝 Quick template"; tag.className="ct-engine-tag ct-engine-tpl"; }
+    var tag=$("ctEngineTag"); tag.textContent="✨ Smart review"; tag.className="ct-engine-tag ct-engine-tpl";
     $("ctCounter").textContent=text.length+" characters";
     $("ctMetaRow").classList.remove("ct-hidden");
-
     $("ctActions").classList.remove("ct-hidden");
     $("ctCopyHint").classList.remove("ct-hidden");
     $("ctSteps").style.display="block";
@@ -601,10 +645,11 @@
     if(!selectedStaff.length){ flash("ctStaff"); alert("Please select who helped you. 🙂"); return; }
     if(!selectedQualities.length){ flash("ctQualities"); alert("Please pick at least one thing you loved. ✨"); return; }
     isGenerating=true; $("ctGenHint").classList.add("ct-hidden"); setBusy(btn,true);
-    generateWithAI()
-      .then(function(r){ dlog("✅ AI succeeded:", r); showReview(r,"ai"); })
-      .catch(function(err){ dlog("⚠️ AI failed/invalid, using template. Reason:", err.message); showReview(generateFromTemplates(),"tpl"); })
-      .then(function(){ setBusy(btn,false); isGenerating=false; });
+    // Small delay so the loading state feels real
+    setTimeout(function(){
+      showReview(generateFromTemplates());
+      setBusy(btn,false); isGenerating=false;
+    }, 550);
   }
   function flash(id){ var el=$(id); el.style.transition="box-shadow .3s"; el.style.boxShadow="0 0 0 3px rgba(249,115,22,.4)"; setTimeout(function(){ el.style.boxShadow="none"; },700); }
 
@@ -620,7 +665,7 @@
     var b=document.createElement("button");
     b.type="button"; b.className="ct-btn ct-google-btn";
     b.innerHTML='<span class="ct-gicon">G</span> Post My 5-Star Review on Google';
-    b.addEventListener("click", openGoogleReview);
+    b.addEventListener("click",openGoogleReview);
     wrap.appendChild(b); refreshIcons();
   }
 
@@ -637,21 +682,16 @@
 
   /* ---------------- Init ---------------- */
   function init(){
-    buildSlider();
-    buildBreeds();
-    buildGrid($("ctStaff"), CONFIG.staff);
-    buildGrid($("ctQualities"), CONFIG.qualities);
-    setupRating();
-    setupBreeds();
-    setupMulti("ctStaff", selectedStaff);
-    setupMulti("ctQualities", selectedQualities);
-    $("ctGenerateBtn").addEventListener("click", function(){ runGeneration(this); });
-    $("ctRegenBtn").addEventListener("click", function(){ runGeneration(this); });
-    $("ctCopyBtn").addEventListener("click", copyReview);
-    updateProgress();
-    refreshIcons();
+    buildSlider(); buildBreeds();
+    buildGrid($("ctStaff"),CONFIG.staff); buildGrid($("ctQualities"),CONFIG.qualities);
+    setupRating(); setupBreeds();
+    setupMulti("ctStaff",selectedStaff); setupMulti("ctQualities",selectedQualities);
+    $("ctGenerateBtn").addEventListener("click",function(){ runGeneration(this); });
+    $("ctRegenBtn").addEventListener("click",function(){ runGeneration(this); });
+    $("ctCopyBtn").addEventListener("click",copyReview);
+    updateProgress(); refreshIcons();
   }
-  if(document.readyState==="loading") document.addEventListener("DOMContentLoaded", init); else init();
+  if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",init); else init();
 })();
 </script>
 </body>
